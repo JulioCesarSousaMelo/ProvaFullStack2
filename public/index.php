@@ -12,7 +12,7 @@
                 <input type="text" name="nome" id="nome" required></br>
             <label>CPF</label>
                 <input type="text" name="cpf" id="cpf" required></br>
-            <label>Data de Nascimento</label>
+            <label>Data de Nascimento </label>
                 <input type="text" name="data_nascimento" id="data_nascimento" required></br>
             <label>Telefone</label>
                 <input type="text" name="telefone" id="telefone" required></br>

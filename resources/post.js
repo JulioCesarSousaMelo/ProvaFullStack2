@@ -3,7 +3,7 @@ function postUsuario(url, body){
     // criando novo objeto XMLHttpRequest 
     let request = new XMLHttpRequest();
 
-    //  inicializa uma nova requisição
+    // inicializa uma nova requisição
     request.open("POST", url, true);
 
     // define o valor do cabeçalho de uma requisição
@@ -38,7 +38,7 @@ function cadastroUsuario(){
     let senha = document.getElementById("senha").value;
     let endereco = document.getElementById("endereco").value;
 
-    
+
 
     // define o BODY em formato JSON
     body = {
