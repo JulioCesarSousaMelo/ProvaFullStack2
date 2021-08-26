@@ -7,6 +7,27 @@
     <title>Parte 02</title>
 </head>
 <body>
-    <h1>OOOOOOOOOOOOOOOOO</h1>
+    <form onsubmit="cadastroUsuario()">
+            <label>Nome</label>
+                <input type="text" name="nome" id="nome" required></br>
+            <label>CPF</label>
+                <input type="text" name="cpf" id="cpf" required></br>
+            <label>Data de Nascimento</label>
+                <input type="text" name="data_nascimento" id="data_nascimento" required></br>
+            <label>Telefone</label>
+                <input type="text" name="telefone" id="telefone" required></br>
+            <label>E-mail</label>
+                <input type="email" name="email" id="email" required></br>      
+            <label>Senha</label>
+                <input type="password" name="senha" id="senha" required></br>
+            <label>Endereço</label>
+                <input type="text" name="endereco" id="endereco" required></br>
+            <input type="submit" id="send" value="Cadastrar">
+    </form>
+
+
+    <!-- CHAMANDO SCRIPTS JS-->
+    <script src="./resources/post.js"></script>
+    <script src="./resources/get.js"></script>
 </body>
 </html>
