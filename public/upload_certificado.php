@@ -36,7 +36,7 @@
             // realizar o upload do arquivo
             if(in_array($extensao, $formatosPermitidos)){
                 // diretório de destino
-                $pasta = "../storage/";
+                $pasta = "../storage/certificado/";
 
                 // caminho do arquivo temporário
                 $temporario = $_FILES['file']['tmp_name'];
@@ -46,18 +46,26 @@
 
                 // upload do arquivo
                 if(move_uploaded_file($temporario, $pasta.$novoNome)){
-                    $mensagem = "<p style = color:green>Upload feito com sucesso!</p>";
+                    echo "<script> 
+                            alert('Upload feito com sucesso!'); 
+                            window.location.href='../public/info_certificado.php';
+                          </script>";
+                  
                 }else{
-                    $mensagem = "<p style = color:red>Erro, não foi possível fazer o upload!</p>";
+                    echo "<script> 
+                            alert('Erro no upload do arquivo!'); 
+                          </script>";
                 }
                 
             }else{
-                $mensagem = "<p style = color:red>Formato inválido!</p>";  
+                echo "<script> 
+                            alert('Erro no upload do arquivo, extensão inválida!'); 
+                      </script>"; 
             }
         }
     ?>
 
-    <span><?= $mensagem ?></span>
+    
     <form action= "<?php echo $_SERVER['PHP_SELF']; ?>" method= "POST" enctype= "multipart/form-data" >
         <input type="file" name="file"/><br><br>
         <input type="submit" name="enviarArquivo" value="Enviar"/><br><br>
