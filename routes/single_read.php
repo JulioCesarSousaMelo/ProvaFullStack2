@@ -30,7 +30,8 @@
             "endereco" => $item-> $endereco,
             "dn" => $item-> $dn,
             "issuer_dn" => $item-> $issuer_dn,
-            "validade_certificado" => $item-> $validade_certificado
+            "validade_certificado_before" => $validade_certificado_before,
+            "validade_certificado_after" => $validade_certificado_after
         );
       
         http_response_code(200);

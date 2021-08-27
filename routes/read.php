@@ -34,7 +34,8 @@
                 "endereco" => $endereco,
                 "dn" => $dn,
                 "issuer_dn" => $issuer_dn,
-                "validade_certificado" => $validade_certificado
+                "validade_certificado_before" => $validade_certificado_before,
+                "validade_certificado_after" => $validade_certificado_after
             );
 
             array_push($usuariosArr["body"], $e);
