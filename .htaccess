@@ -5,5 +5,13 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 DirectoryIndex index.php
 
-RewriteRule . /index.php [L]
-
+ErrorDocument 404 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 400 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 403 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 404 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 500 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 501 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 502 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 503 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 504 http://localhost:8080/ProvaFullStack2/
+ErrorDocument 505 http://localhost:8080/ProvaFullStack2/
