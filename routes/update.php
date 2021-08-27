@@ -25,6 +25,10 @@
     $item->email = $data->email;
     $item->senha = $data->senha;
     $item->endereco = $data->endereco;
+    $item->dn = $data->dn;
+    $item->issuer_dn = $data->issuer_dn;
+    $item->validade_certificado_before = $data->validade_certificado_before;
+    $item->validade_certificado_after = $data->validade_certificado_after;
     
     
     if($item->updateUsuarios()){
