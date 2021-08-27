@@ -48,6 +48,8 @@
 <body>
     <h1>INFORMAÇÕES CERTIFICADO DIGITAL</h1>
 
+    <p>Olá, <?= $_SESSION['nome']; ?> | <a href="../public/logout.php">Logout</a></p> 
+
     <!-- tabela DN -->
     <div class="table">
     <table border="1">
@@ -84,7 +86,6 @@
     </table><br><br>
     </div>
 
-    
     <!-- tabela Issuer DN -->
     <div class="table">
     <table border="1">
@@ -134,7 +135,5 @@
         </tr>
     </table><br><br>
     </div>
-
-    <a href="../public/logout.php">Logout</a>
 </body>
 </html>
