@@ -23,11 +23,9 @@ function postUsuario(url, body){
 
 function cadastroUsuario(){
 
-    // cancela o EVENTO se for cancelável
-    event.preventDefault();
+    event.preventDefault(); // cancela o EVENTO se for cancelável
 
-    // define a URL 
-    let url = "http://localhost:8080/provafullstack2/routes/create.php";
+    let url = "http://localhost:8080/provafullstack2/routes/create.php";  // define a URL 
 
     // armazena os valores dos INPUTS do formulário
     let nome = document.getElementById("nome").value;
@@ -51,7 +49,9 @@ function cadastroUsuario(){
         "endereco": endereco
     }
 
-    // realiza o POST com a URL e o BODY
-    postUsuario(url, body);
+    postUsuario(url, body); // realiza o POST com a URL e o BODY
+
+    alert("Usuário Cadastrado com sucesso !!!"); // gerando um alert
+    window.location.href='index.php'; // redireciona para a pagina inicial
 
 }
