@@ -9,7 +9,7 @@
 <body>
     <h1>Login</h1>
     <hr>
-    <form action="verifica_login.php" method="POST">
+    <form action="public/verifica_login.php" method="POST">
         <label>E-mail</label>
             <input type="email" name="email" ></br>      
         <label>Senha</label>
