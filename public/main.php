@@ -6,7 +6,7 @@
         session_unset();
         echo "<script>
                 alert('Está página só pode ser acessa por usuário logado');
-                window.location.href='http://localhost:8080/ProvaFullStack2/';
+                window.location.href='../index.php';
               </script>";
 
     }
@@ -20,6 +20,6 @@
     <title>Página Inicial</title>
 </head>
 <body>
-    
+    <a href="../public/logout.php">Logout</a>
 </body>
 </html>

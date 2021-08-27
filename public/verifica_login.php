@@ -25,23 +25,23 @@
         // Verificar login
         if($usuario->login($email, $senha)){
             if(isset($_SESSION['id'])){
-                header("Location: upload_certificado.php");
+                header("Location: ../public/upload_certificado.php");
             }else{
                 session_unset(); // remove todas as variáveis de sessão
                 session_destroy(); // destroi a sessão
-                header("Location: http://localhost:8080/ProvaFullStack2/");
+                header("Location: ../index.php");
             } 
         }else{
             session_unset(); // remove todas as variáveis de sessão
             session_destroy(); // destroi a sessão
-            header("Location: http://localhost:8080/ProvaFullStack2/");
+            header("Location: ../index.php");
         }
 
 
     }else{
         session_unset(); // remove todas as variáveis de sessão
         session_destroy(); // destroi a sessão
-        header("Location: http://localhost:8080/ProvaFullStack2/");
+        header("Location: ../index.php");
     }
 
 
