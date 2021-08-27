@@ -94,11 +94,14 @@
                             id, 
                             nome, 
                             cpf, 
+                            data_nascimento, 
                             telefone, 
                             email, 
-                            data_nascimento, 
                             senha, 
-                            endereco 
+                            endereco,
+                            dn,
+                            issuer_dn,
+                            validade_certificado
                         FROM " 
                             . $this->db_table . "";
             $stmt = $this->connection->prepare($sqlQuery);
@@ -112,11 +115,14 @@
                             id, 
                             nome, 
                             cpf, 
+                            data_nascimento, 
                             telefone, 
                             email, 
-                            data_nascimento, 
                             senha, 
-                            endereco 
+                            endereco,
+                            dn,
+                            issuer_dn,
+                            validade_certificado
                         FROM "
                             . $this->db_table ."
                         WHERE 
@@ -133,11 +139,14 @@
             
             $this->nome = $dataRow['nome'];
             $this->cpf = $dataRow['cpf'];
+            $this->data_nascimento = $dataRow['data_nascimento'];
             $this->telefone = $dataRow['telefone'];
             $this->email = $dataRow['email'];
-            $this->data_nascimento = $dataRow['data_nascimento'];
             $this->senha = $dataRow['senha'];
             $this->endereco = $dataRow['endereco'];
+            $this->dn = $dataRow['dn'];
+            $this->issuer_dn = $dataRow['issuer_dn'];
+            $this->validade_certificado = $dataRow['validade_certificado'];
         }        
 
         // UPDATE - Atualizar registros
