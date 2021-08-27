@@ -29,19 +29,19 @@
             }else{
                 session_unset(); // remove todas as variáveis de sessão
                 session_destroy(); // destroi a sessão
-                header("Location: index.php");
+                header("Location: http://localhost:8080/ProvaFullStack2/");
             } 
         }else{
             session_unset(); // remove todas as variáveis de sessão
             session_destroy(); // destroi a sessão
-            header("Location: index.php");
+            header("Location: http://localhost:8080/ProvaFullStack2/");
         }
 
 
     }else{
         session_unset(); // remove todas as variáveis de sessão
         session_destroy(); // destroi a sessão
-        header("Location: index.php");
+        header("Location: http://localhost:8080/ProvaFullStack2/");
     }
 
 

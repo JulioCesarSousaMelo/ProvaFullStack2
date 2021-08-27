@@ -17,7 +17,7 @@
         <button type="submit" name="btn-entrar"> Entrar</button>
     </form>
 
-    <p>Ainda não possui <a href="http://localhost:8080/ProvaFullStack2/public/cadastro.php">cadastro ?</a></p>
+    <p>Ainda não possui <a href="public/cadastro.php">cadastro ?</a></p>
 
     <!-- CHAMANDO SCRIPTS JS-->
     <script src="../resources/js/post.js"></script>

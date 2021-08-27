@@ -25,7 +25,7 @@
             <input type="submit" id="send" value="Cadastrar">
     </form>
 
-    <p>Fazer <a href="http://localhost:8080/ProvaFullStack2/public/index.php"> login</a></p>
+    <p>Fazer <a href="http://localhost:8080/ProvaFullStack2"> login</a></p>
 
 
     <!-- CHAMANDO SCRIPTS JS-->
