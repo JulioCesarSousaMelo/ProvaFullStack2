@@ -7,19 +7,17 @@
     <title>Página de Login</title>
 </head>
 <body>
-
-    <form>
-            <label>E-mail</label>
-                <input type="email" name="email" id="email" required></br>      
-            <label>Senha</label>
-                <input type="password" name="senha" id="senha" required></br>
-            <input type="submit" id="send" value="Entrar">
+    <h1>Login</h1>
+    <hr>
+    <form action="verifica_login.php" method="POST">
+        <label>E-mail</label>
+            <input type="email" name="email" ></br>      
+        <label>Senha</label>
+            <input type="password" name="senha" ></br>
+        <button type="submit" name="btn-entrar"> Entrar</button>
     </form>
 
     <p>Ainda não possui <a href="http://localhost:8080/ProvaFullStack2/public/cadastro.php">cadastro ?</a></p>
-    
-
-
 
     <!-- CHAMANDO SCRIPTS JS-->
     <script src="../resources/js/post.js"></script>
