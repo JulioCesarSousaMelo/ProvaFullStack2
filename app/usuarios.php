@@ -22,6 +22,33 @@
             $this->connection = $db;
         }
 
+         // LOGIN - Verificar EMAIL e SENHA no banco
+         public function login($email, $senha){
+            $sqlQuery = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
+
+            $sqlQuery = $this->connection->prepare($sqlQuery);
+
+            $sqlQuery->bindValue("email", $email);
+            $sqlQuery->bindValue("senha", $senha);
+
+            $sqlQuery->execute();
+
+            // Validar se os dados existem
+            if($sqlQuery->rowCount() > 0){
+                $dado = $sqlQuery->fetch();
+
+                // Criar uma sessão
+                $_SESSION['id'] = $dado['id'];
+                $_SESSION['email'] = $dado['email'];
+                $_SESSION['senha'] = $dado['senha'];
+                $_SESSION['nome'] = $dado['nome'];
+
+                return true;
+            }else{
+                return false;
+            }
+        }
+
         // CREATE - Criar registro
         public function createUsuarios(){
             $sqlQuery = "INSERT INTO
