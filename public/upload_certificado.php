@@ -24,7 +24,7 @@
 <body>
     <h1>UPLOAD DE CERTIFICADO</h1>
 
-    <form action="../public/main.php" method="POST">
+    <form action="../public/info_certificado.php" method="POST">
         <label for="nome_arquivo">Nome arquivo: </label>
             <input type="text" name="nome_arquivo" placeholder="ex: documento2021"><br>
         <label for="arquivo">Arquivo: </label>
