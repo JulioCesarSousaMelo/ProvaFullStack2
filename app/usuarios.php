@@ -101,7 +101,8 @@
                             endereco,
                             dn,
                             issuer_dn,
-                            validade_certificado
+                            validade_certificado_before,
+                            validade_certificado_after
                         FROM " 
                             . $this->db_table . "";
             $stmt = $this->connection->prepare($sqlQuery);
@@ -122,7 +123,8 @@
                             endereco,
                             dn,
                             issuer_dn,
-                            validade_certificado
+                            validade_certificado_before,
+                            validade_certificado_after
                         FROM "
                             . $this->db_table ."
                         WHERE 
@@ -146,7 +148,8 @@
             $this->endereco = $dataRow['endereco'];
             $this->dn = $dataRow['dn'];
             $this->issuer_dn = $dataRow['issuer_dn'];
-            $this->validade_certificado = $dataRow['validade_certificado'];
+            $this->validade_certificado_before = $dataRow['validade_certificado_before'];
+            $this->validade_certificado_after = $dataRow['validade_certificado_after'];
         }        
 
         // UPDATE - Atualizar registros
