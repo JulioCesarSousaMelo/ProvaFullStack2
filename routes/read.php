@@ -27,11 +27,14 @@
                 "id" => $id,
                 "nome" => $nome,
                 "cpf" => $cpf,
+                "data_nascimento" => $data_nascimento,
                 "telefone" => $telefone,
                 "email" => $email,
-                "data_nascimento" => $data_nascimento,
                 "senha" => $senha,
-                "endereco" => $endereco 
+                "endereco" => $endereco,
+                "dn" => $dn,
+                "issuer_dn" => $issuer_dn,
+                "validade_certificado" => $validade_certificado
             );
 
             array_push($usuariosArr["body"], $e);

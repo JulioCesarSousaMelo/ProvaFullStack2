@@ -20,14 +20,17 @@
     if($item->nome != null){
         // create array
         $emp_arr = array(
-            "id" => $item->id,
-            "nome" => $item->nome,
-            "cpf" => $item->cpf,
-            "telefone" => $item->telefone,
-            "email" => $item->email,
-            "data_nascimento" => $item->data_nascimento,
-            "senha" => $item->senha,
-            "endereco" => $item->endereco 
+            "id" => $item-> $id,
+            "nome" => $item-> $nome,
+            "cpf" => $item-> $cpf,
+            "data_nascimento" => $item-> $data_nascimento,
+            "telefone" => $item-> $telefone,
+            "email" => $item-> $email,
+            "senha" => $item-> $senha,
+            "endereco" => $item-> $endereco,
+            "dn" => $item-> $dn,
+            "issuer_dn" => $item-> $issuer_dn,
+            "validade_certificado" => $item-> $validade_certificado
         );
       
         http_response_code(200);

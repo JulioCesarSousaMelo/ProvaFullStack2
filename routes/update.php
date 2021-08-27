@@ -20,11 +20,12 @@
     // valores do usuario 
     $item->nome = $data->nome;
     $item->cpf = $data->cpf;
+    $item->data_nascimento = $data->data_nascimento;
     $item->telefone = $data->telefone;
     $item->email = $data->email;
-    $item->data_nascimento = $data->data_nascimento;
     $item->senha = $data->senha;
     $item->endereco = $data->endereco;
+    
     
     if($item->updateUsuarios()){
         echo json_encode("Dados do usuário atualizados.");
