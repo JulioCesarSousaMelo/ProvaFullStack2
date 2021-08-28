@@ -1,20 +1,4 @@
 <?php
-    // Iniciando sessão ou resumindo sessão existe
-    session_start();
-
-    // Verificando se possui usuário logado
-    if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
-        session_unset();
-        echo "<script>
-                alert('Está página só pode ser acessa por usuário logado');
-                window.location.href='../index.php';
-              </script>";
-    }
-
-    // Armazenando nome do usuário para exibir
-    $nome = $_SESSION['nome']; 
-?>
-<?php
     if(isset($_POST['enviarArquivo'])){
         // definir os formatos permitidos para upload
         $formatosPermitidos = array("pem");
@@ -36,13 +20,10 @@
             // upload do arquivo
             if(move_uploaded_file($temporario, $pasta.$novoNome)){
 
-                // incluindo nome do arquivo na sessão, para ser utilizado em info_certificado.php
-                $_SESSION['nome_certificado'] = $novoNome;
-
                 // passando $nome_certificado na url utilizando o GET
                 echo "<script> 
                         alert('Upload feito com sucesso!'); 
-                        window.location.href='../public/info_certificado.php'
+                        window.location.href='../index.php'
                         </script>";
                 
             }else{
@@ -67,10 +48,9 @@
     <title>Página de Upload</title>
 </head>
 <body>
+
     <h1>UPLOAD DE CERTIFICADO</h1>
-
-    <p>Olá, <?= $_SESSION['nome']; ?> | <a href="../public/logout.php">Logout</a></p> 
-
+    <hr>
     <form action= "<?php echo $_SERVER['PHP_SELF']; ?>" method= "POST" enctype= "multipart/form-data">
         <input type="file" name="file"/><br><br>
         <input type="submit" name="enviarArquivo" value="Enviar"/><br><br>
