@@ -7,6 +7,8 @@
     <title>Página de Cadastro</title>
 </head>
 <body>
+    <h1>Cadastro</h1>
+    <hr>
     <form onsubmit="cadastroUsuario()">
             <label>Nome</label>
                 <input type="text" name="nome" id="nome" required></br>
