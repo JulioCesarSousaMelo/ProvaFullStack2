@@ -12,14 +12,34 @@
     }
 
     include_once '../vendor/autoload.php'; 
+    include_once '../config/database.php';
     include_once '../app/certificado.php'; 
+    
+    use phpseclib3\File\X509; 
 
     // Instanciando Novos Objetos 
-    $certificado = new Certificado();
+    $x509 = new X509(); 
+    $database = new Database();
+    $db = $database->getConnection();
+    $certificado = new Certificado($db);
 
-    $certificado->uploadCertificado($_POST['enviarArquivo']);
-    $certificado->infoCertificado();
-    $certificado->insertCertificado();
+    if(isset($_POST['enviarArquivo'])){
+
+        $resultForm = $_POST['enviarArquivo'];
+        $nomeCertificado = $certificado->uploadArquivo($resultForm);
+
+        $resultado = $x509->loadX509(file_get_contents("../storage/certificado/$nomeCertificado")); 
+
+        $dn = ($x509->getDN()); // armazenando o valor de DN 
+        $issuerDN = ($x509->getIssuerDN()); // armazenando o valor de Issuer DN
+        $validityBefore = ($resultado['tbsCertificate']['validity']['notBefore']['utcTime']); // armazenando a VALIDADE - NOT BEFORE
+        $validityAfter = ($resultado['tbsCertificate']['validity']['notAfter']['utcTime']); // armazenando a VALIDADE - NOT AFTER 
+
+        $certificado->armazenarInformacoes($dn, $issuerDN, $validityBefore, $validityAfter);
+
+        $id = $_SESSION['id'];
+        $certificado->inserirInformacoes($id);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
