@@ -10,21 +10,25 @@
                 window.location.href='../index.php';
               </script>";
     }
-?>
-<?php
-    // incluindo o auto-load
+
+    include_once '../config/database.php';
     include '../vendor/autoload.php'; 
 
-    // usando a biblioteca phpseclib
     use phpseclib3\File\X509; 
 
-    // instanciando um novo objeto da biblioteca phpseclib
+    // Instanciando Novos Objetos 
+    $database = new Database();
     $x509 = new X509(); 
 
+    // Conexão com o Banco
+    $conexao = $database->getConnection();
+
+    $id = $_SESSION['id'];
+
     if(isset($_POST['enviarArquivo'])){
+
         $formatosPermitidos = array("pem");
 
-        // descobrir a extensão do arquivo
         $extensao = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
         // realizar o upload do arquivo
@@ -38,7 +42,7 @@
             // gerando nome único para o novo arquivo
             $novoNome = uniqid().".$extensao";
 
-            // upload do arquivo 
+            // upload do arquivo      
             if(move_uploaded_file($temporario, $pasta.$novoNome)){
 
                 //lendo o certificado .pem  & armazendando os resultados
@@ -49,11 +53,24 @@
                 $validityBefore = ($aux['tbsCertificate']['validity']['notBefore']['utcTime']); // armazenando a VALIDADE - NOT BEFORE
                 $validityAfter = ($aux['tbsCertificate']['validity']['notAfter']['utcTime']); // armazenando a VALIDADE - NOT AFTER 
 
-                
-                // echo "<script> 
-                //         alert('Upload feito com sucesso!'); 
-                //         window.location.href='../public/info_certificado.php'
-                //         </script>";
+                // inserindo os dados do certificado no BANCO
+                    $resultado = $conexao->prepare("UPDATE 
+                                                        `usuarios` 
+                                                    SET 
+                                                        `dn` = '$dn',
+                                                        `issuer_dn` = '$issuerDN',
+                                                        `validade_certificado_before` = '$validityBefore',
+                                                        `validade_certificado_after` = '$validityAfter'
+                                                    WHERE 
+                                                        `usuarios`.`id` = $id;");
+
+                $resultado->execute();
+
+                echo "<script> 
+                        alert('Upload feito com sucesso!'); 
+                        </script>";
+
+                        // window.location.href='../public/info_certificado.php'
             }else{
                 echo "<script> 
                         alert('Erro no upload do arquivo!'); 
@@ -83,5 +100,8 @@
         <input type="file" name="file"/><br><br>
         <input type="submit" name="enviarArquivo" value="Enviar"/><br><br>
     </form>
+    
+    <!-- CHAMANDO SCRIPTS JS-->
+    <script src="../resources/js/post.js"></script>
 </body>
 </html>
