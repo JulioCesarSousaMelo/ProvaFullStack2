@@ -18,8 +18,5 @@
     </form>
 
     <p>Ainda não possui <a href="public/cadastro.php">cadastro ?</a></p>
-
-    <!-- CHAMANDO SCRIPTS JS-->
-    <script src="../resources/js/post.js"></script>
 </body>
 </html>
