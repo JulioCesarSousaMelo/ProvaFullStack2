@@ -10,29 +10,14 @@
               </script>";
 
     }
-?>
-<?php
-    // incluindo o auto-load
-    include '../vendor/autoload.php'; 
+
+    
+
+    // incluindo nome do arquivo na sessão, para ser utilizado em info_certificado.php
+    $_SESSION['nome_certificado'] = $novoNome;
 
     // armazenando o nome_certificado contido na SESSION
     $nome_certificado = $_SESSION['nome_certificado'];
-
-    // usando a biblioteca phpseclib
-    use phpseclib3\File\X509; 
-
-    // instanciando um novo objeto
-    $x509 = new X509(); 
-
-    //lendo o certificado .pem  & armazendando resultado na variavel $aux
-    $aux = $x509->loadX509(file_get_contents("../storage/certificado/$nome_certificado")); 
-
-    $dn[] = ($x509->getDN()); // armazenando o valor de DN 
-
-    $issuerDN[] = ($x509->getIssuerDN()); // armazenando o valor de Issuer DN
-
-    $validityBefore = ($aux['tbsCertificate']['validity']['notBefore']['utcTime']); // armazenando a VALIDADE - NOT BEFORE
-    $validityAfter = ($aux['tbsCertificate']['validity']['notAfter']['utcTime']); // armazenando a VALIDADE - NOT AFTER 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

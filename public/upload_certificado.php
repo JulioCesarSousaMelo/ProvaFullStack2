@@ -10,13 +10,18 @@
                 window.location.href='../index.php';
               </script>";
     }
-
-    // Armazenando nome do usuário para exibir
-    $nome = $_SESSION['nome']; 
 ?>
 <?php
+    // incluindo o auto-load
+    include '../vendor/autoload.php'; 
+
+    // usando a biblioteca phpseclib
+    use phpseclib3\File\X509; 
+
+    // instanciando um novo objeto da biblioteca phpseclib
+    $x509 = new X509(); 
+
     if(isset($_POST['enviarArquivo'])){
-        // definir os formatos permitidos para upload
         $formatosPermitidos = array("pem");
 
         // descobrir a extensão do arquivo
@@ -33,24 +38,27 @@
             // gerando nome único para o novo arquivo
             $novoNome = uniqid().".$extensao";
 
-            // upload do arquivo
+            // upload do arquivo 
             if(move_uploaded_file($temporario, $pasta.$novoNome)){
 
-                // incluindo nome do arquivo na sessão, para ser utilizado em info_certificado.php
-                $_SESSION['nome_certificado'] = $novoNome;
+                //lendo o certificado .pem  & armazendando os resultados
+                $aux = $x509->loadX509(file_get_contents("../storage/certificado/$novoNome")); 
 
-                // passando $nome_certificado na url utilizando o GET
-                echo "<script> 
-                        alert('Upload feito com sucesso!'); 
-                        window.location.href='../public/info_certificado.php'
-                        </script>";
+                $dn[] = ($x509->getDN()); // armazenando o valor de DN 
+                $issuerDN[] = ($x509->getIssuerDN()); // armazenando o valor de Issuer DN
+                $validityBefore = ($aux['tbsCertificate']['validity']['notBefore']['utcTime']); // armazenando a VALIDADE - NOT BEFORE
+                $validityAfter = ($aux['tbsCertificate']['validity']['notAfter']['utcTime']); // armazenando a VALIDADE - NOT AFTER 
+
                 
+                // echo "<script> 
+                //         alert('Upload feito com sucesso!'); 
+                //         window.location.href='../public/info_certificado.php'
+                //         </script>";
             }else{
                 echo "<script> 
                         alert('Erro no upload do arquivo!'); 
                         </script>";
             }
-            
         }else{
             echo "<script> 
                         alert('Erro no upload do arquivo, extensão inválida!'); 
