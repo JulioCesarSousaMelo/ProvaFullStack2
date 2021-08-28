@@ -8,16 +8,7 @@
                 alert('Está página só pode ser acessa por usuário logado');
                 window.location.href='../index.php';
               </script>";
-
     }
-
-    
-
-    // incluindo nome do arquivo na sessão, para ser utilizado em info_certificado.php
-    $_SESSION['nome_certificado'] = $novoNome;
-
-    // armazenando o nome_certificado contido na SESSION
-    $nome_certificado = $_SESSION['nome_certificado'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -120,7 +111,5 @@
         </tr>
     </table><br><br>
     </div>
-
-    
 </body>
 </html>
