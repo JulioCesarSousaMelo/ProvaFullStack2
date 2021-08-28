@@ -39,8 +39,6 @@
 
                 // Criar uma sessão
                 $_SESSION['id'] = $dado['id'];
-                $_SESSION['email'] = $dado['email'];
-                $_SESSION['senha'] = $dado['senha'];
                 $_SESSION['nome'] = $dado['nome'];
 
                 return true;
