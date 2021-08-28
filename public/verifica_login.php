@@ -2,7 +2,7 @@
     // Iniciando Sessão
     session_start();
 
-    // Verificar se os dados não estão vazios, senão redirecionar para o index.php
+    // Verificar se os dados não estão vazios, se estiverem , irá redirecionar para o index.php
     if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha'])){
 
         // Incluindo arquivos
