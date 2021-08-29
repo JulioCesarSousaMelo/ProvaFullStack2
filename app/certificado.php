@@ -90,7 +90,7 @@
             $this->issuerDN=htmlspecialchars(strip_tags($this->issuerDN));
             $this->validityBefore=htmlspecialchars(strip_tags($this->validityBefore));
             $this->validityAfter=htmlspecialchars(strip_tags($this->validityAfter));
-            $id=htmlspecialchars(strip_tags(id));
+            $id=htmlspecialchars(strip_tags($id));
 
             // bind data
             $sqlQuery->bindParam(":dn", $this->dn);
