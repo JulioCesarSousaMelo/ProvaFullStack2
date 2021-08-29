@@ -30,12 +30,29 @@
 
         $resultado = $x509->loadX509(file_get_contents("../storage/certificado/$nomeCertificado")); 
 
-        $dn = ($x509->getDN()); // armazenando o valor de DN 
-        $issuerDN = ($x509->getIssuerDN()); // armazenando o valor de Issuer DN
+        $dn[] = ($x509->getDN()); // armazenando o valor de DN 
+        $issuerDN[] = ($x509->getIssuerDN()); // armazenando o valor de Issuer DN
         $validityBefore = ($resultado['tbsCertificate']['validity']['notBefore']['utcTime']); // armazenando a VALIDADE - NOT BEFORE
         $validityAfter = ($resultado['tbsCertificate']['validity']['notAfter']['utcTime']); // armazenando a VALIDADE - NOT AFTER 
 
-        $certificado->armazenarInformacoes($dn, $issuerDN, $validityBefore, $validityAfter);
+        $itemDN = array();
+        $itemIssuerDN = array();
+
+        // items DN
+        for($i = 0; $i < 6; $i++){
+            array_push($itemDN, $dn[0]["rdnSequence"][$i][0]["value"]["printableString"]);
+        }
+
+        // items issuerDN
+        for($i = 0; $i < 5; $i++){
+            array_push($itemIssuerDN, $dn[0]["rdnSequence"][$i][0]["value"]["printableString"]);
+        }
+
+        // trasformando os item array para string, pois os mesmos serão enviado ao banco de dados
+        $itemDN = implode(',', $itemDN);
+        $itemIssuerDN = implode("','", $itemIssuerDN);
+
+        $certificado->armazenarInformacoes($itemDN, $itemIssuerDN, $validityBefore, $validityAfter);
 
         $id = $_SESSION['id'];
         $certificado->inserirInformacoes($id);
