@@ -7,8 +7,8 @@
 
         // Incluindo arquivos
         include_once '../config/database.php';
-        include_once '../app/usuarios.php';
-        include_once '../app/certificado.php';
+        include_once '../model/usuarios.php';
+        include_once '../model/certificado.php';
 
         // Instanciando Novos Objetos 
         $database = new Database();

@@ -13,7 +13,7 @@
 
     include_once '../vendor/autoload.php'; 
     include_once '../config/database.php';
-    include_once '../app/certificado.php'; 
+    include_once '../model/certificado.php'; 
     
     use phpseclib3\File\X509; 
 

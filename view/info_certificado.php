@@ -11,7 +11,7 @@
     }
 
     include_once '../config/database.php';
-    include_once '../app/certificado.php'; 
+    include_once '../model/certificado.php'; 
     
 
     // Instanciando Novos Objetos 
