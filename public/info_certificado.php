@@ -9,6 +9,33 @@
                 window.location.href='../index.php';
               </script>";
     }
+
+    include_once '../config/database.php';
+    include_once '../app/certificado.php'; 
+    
+
+    // Instanciando Novos Objetos 
+    $database = new Database();
+    $db = $database->getConnection();
+    $certificado = new Certificado($db);
+
+    $id = $_SESSION['id'];
+
+    // retorna as informações sobre o certificado
+    $items = $certificado->retornarInformações($id);
+
+    // armazenando as informações específicas
+    $dn = $items[dn];
+    $issuerDN = $items[issuer_dn];
+    $validade_certificado_before = $items[validade_certificado_before];
+    $validade_certificado_after = $items[validade_certificado_after];
+
+    
+    list($c_dn, $o_dn, $ou_dn_1, $ou_dn_2, $ou_dn_3, $cn_dn) = explode(",", $dn);
+    list($c_issuer_dn, $o_issuer_dn, $ou_issuer_dn_1, $ou_issuer_dn_2, $ou_issuer_dn_3) = explode(",", $issuerDN);
+
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,29 +62,29 @@
         </tr>
         <tr>
             <td>C</td>
-            <td><?php echo $dn[0]["rdnSequence"][0][0]["value"]["printableString"]; ?></td>
+            <td><?= $c_dn; ?></td>
         </tr>
         <tr>
             <td>O</td>
-            <td><?php echo $dn[0]["rdnSequence"][1][0]["value"]["printableString"]; ?></td>
+            <td><?= $o_dn; ?></td>
         </tr>
         <tr>
             <td>OU</td>
-            <td><?php echo $dn[0]["rdnSequence"][2][0]["value"]["printableString"]; ?></td>
+            <td><?= $ou_dn_1; ?></td>
         </tr>
         <tr>
             <td>OU</td>
-            <td><?php echo $dn[0]["rdnSequence"][3][0]["value"]["printableString"]; ?></td>
+            <td><?= $ou_dn_2; ?></td>
             
         </tr>
         <tr>
             <td>OU</td>
-            <td><?php echo $dn[0]["rdnSequence"][4][0]["value"]["printableString"]; ?></td>
+            <td><?= $ou_dn_3; ?></td>
             
         </tr>
         <tr>
             <td>CN</td>
-            <td><?php echo $dn[0]["rdnSequence"][5][0]["value"]["printableString"]; ?></td>
+            <td><?= $cn_dn; ?></td>
         </tr>
     </table><br><br>
     </div>
@@ -71,24 +98,24 @@
         </tr>
         <tr>
             <td>C</td>
-            <td><?php echo $issuerDN[0]["rdnSequence"][0][0]["value"]["printableString"]; ?></td>
+            <td><?= $c_issuer_dn; ?></td>
         </tr>
         <tr>
             <td>O</td>
-            <td><?php echo $issuerDN[0]["rdnSequence"][1][0]["value"]["printableString"]; ?></td>
+            <td><?= $o_issuer_dn; ?></td>
         </tr>
         <tr>
             <td>OU</td>
-            <td><?php echo $issuerDN[0]["rdnSequence"][2][0]["value"]["printableString"]; ?></td>
+            <td><?= $ou_issuer_dn_1; ?></td>
         </tr>
         <tr>
             <td>OU</td>
-            <td><?php echo $issuerDN[0]["rdnSequence"][3][0]["value"]["printableString"]; ?></td>
+            <td><?= $ou_issuer_dn_2; ?></td>
             
         </tr>
         <tr>
             <td>OU</td>
-            <td><?php echo $issuerDN[0]["rdnSequence"][4][0]["value"]["printableString"]; ?></td>
+            <td><?= $ou_issuer_dn_3; ?></td>
             
         </tr>
     </table><br><br>
@@ -103,11 +130,11 @@
         </tr>
         <tr>
             <td>Não antes de</td>
-            <td><?= $validityBefore ?></td>
+            <td><?= $validade_certificado_before ?></td>
         </tr>
         <tr>
             <td>Não depois de</td>
-            <td><?= $validityAfter ?></td>
+            <td><?= $validade_certificado_after ?></td>
         </tr>
     </table><br><br>
     </div>
