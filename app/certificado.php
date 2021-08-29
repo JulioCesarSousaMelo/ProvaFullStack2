@@ -85,7 +85,7 @@
             $this->issuerDN=htmlspecialchars(strip_tags($this->issuerDN));
             $this->validityBefore=htmlspecialchars(strip_tags($this->validityBefore));
             $this->validityAfter=htmlspecialchars(strip_tags($this->validityAfter));
-            $this->id=htmlspecialchars(strip_tags($this->id));
+            $id=htmlspecialchars(strip_tags(id));
 
             // bind data
             $sqlQuery->bindParam(":dn", $this->dn);
@@ -102,5 +102,32 @@
                         window.location.href='../public/info_certificado.php';
                      </script>";
             }
+        }
+
+        // Selecionar as informações do certificado no banco
+        public function retornarInformações($id){
+            $sqlQuery = " SELECT
+                            dn,
+                            issuer_dn,
+                            validade_certificado_before,
+                            validade_certificado_after
+                        FROM "
+                            . $this->db_table ."
+                        WHERE 
+                            usuarios.id = :id;";
+
+            $sqlQuery = $this->conexao->prepare($sqlQuery);
+
+            // sanitize
+            $id=htmlspecialchars(strip_tags($id));
+
+            // bind data
+            $sqlQuery->bindParam(":id", $id);
+
+            $sqlQuery->execute();
+
+            $resultado = $sqlQuery->fetch(PDO::FETCH_ASSOC);
+
+            return $resultado;
         }
     }
