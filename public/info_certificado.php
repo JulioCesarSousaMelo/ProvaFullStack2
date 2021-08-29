@@ -51,7 +51,7 @@
 <body>
     <h1>INFORMAÇÕES CERTIFICADO DIGITAL</h1>
 
-    <p>Olá, <?= $_SESSION['nome']; ?> | <a href="../public/logout.php">Logout</a></p> 
+    <p>Olá, <?= $_SESSION['nome']; ?> | <a href="../public/logout.php">Logout</a> | <a href="../public/upload_certificado.php">Cadastrar novo certificado</a> </p> 
     <hr>
     <!-- tabela DN -->
     <div class="table">
