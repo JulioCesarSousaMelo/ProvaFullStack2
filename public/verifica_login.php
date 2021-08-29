@@ -8,12 +8,14 @@
         // Incluindo arquivos
         include_once '../config/database.php';
         include_once '../app/usuarios.php';
+        include_once '../app/certificado.php';
 
         // Instanciando Novos Objetos 
         $database = new Database();
-
         $db = $database->getConnection();
-        $usuario = new Usuarios($db);
+
+        $usuario = new Usuarios($db); 
+        $certificado = new Certificado($db);
 
         // Conexão com o Banco
         $database->getConnection();
@@ -22,10 +24,22 @@
         $email = addslashes($_POST['email']);
         $senha = addslashes($_POST['senha']);
 
-        // Verificar login
+        // Verificar login e existência de upload
         if($usuario->login($email, $senha)){
+
+            $id = $_SESSION['id'];
+
             if(isset($_SESSION['id'])){
-                header("Location: ../public/upload_certificado.php");
+
+                if($certificado->verificarArquivo($id)){
+                    if(isset($_SESSION['dn'])){
+                        header("Location: ../public/info_certificado.php");
+                    }else{
+                        header("Location: ../public/upload_certificado.php");
+                    }
+                }else{
+                    header("Location: ../public/upload_certificado.php");
+                }
             }else{
                 session_unset(); // remove todas as variáveis de sessão
                 session_destroy(); // destroi a sessão
