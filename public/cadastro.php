@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Cadastro</title>
+    <!-- =================================================================================================================================================== -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <!-- =================================================================================================================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <!-- =================================================================================================================================================== -->
 </head>
 <body>
     <h1>Cadastro</h1>
@@ -13,9 +18,9 @@
             <label>Nome</label>
                 <input type="text" name="nome" id="nome" required></br>
             <label>CPF</label>
-                <input type="text" name="cpf" id="cpf" required></br>
+                <input type="text" name="cpf" id="cpf" minlength="14" maxlength="14" onkeypress="$(this).mask('000.000.000-00')"required></br>
             <label>Data de Nascimento </label>
-                <input type="text" name="data_nascimento" id="data_nascimento" required></br>
+                <input type="text" name="data_nascimento" id="data_nascimento" onkeypress="$(this).mask('00/00/0000')" required></br>
             <label>Telefone</label>
                 <input type="text" name="telefone" id="telefone" required></br>
             <label>E-mail</label>
