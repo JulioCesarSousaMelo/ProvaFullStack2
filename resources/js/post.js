@@ -36,22 +36,30 @@ function cadastroUsuario(){
     let senha = document.getElementById("senha").value;
     let endereco = document.getElementById("endereco").value;
 
+    
 
+    // Formatando a data para o padrão YYYY/mm/dd
+    var dia  = data_nascimento.split("/")[0];
+    var mes  = data_nascimento.split("/")[1];
+    var ano  = data_nascimento.split("/")[2];
+    
+    data_nascimento_formatada = ano + '-' + ("0"+mes) .slice(-2) + '-' + ("0"+dia).slice(-2);
 
     // define o BODY em formato JSON
     body = {
         "nome": nome,
         "cpf": cpf, 
+        "data_nascimento": data_nascimento_formatada,
         "telefone": telefone,
         "email": email,
-        "data_nascimento": data_nascimento,
         "senha": senha,
         "endereco": endereco
     }
 
-    postUsuario(url, body); // realiza o POST com a URL e o BODY
+    // realiza o POST com a URL e o BODY
+    postUsuario(url, body);
 
     alert("Usuário Cadastrado com sucesso !!!"); // gerando um alert
     window.location.href='../index.php'; // redireciona para a pagina inicial
-
+  
 }
