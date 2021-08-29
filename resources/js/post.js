@@ -23,7 +23,7 @@ function postUsuario(url, body){
 
 function cadastroUsuario(){
 
-    event.preventDefault(); // cancela o EVENTO se for cancelável
+    event.preventDefault(); // cancela o evento
 
     let url = "../routes/create.php";  // define a URL 
 
@@ -36,9 +36,7 @@ function cadastroUsuario(){
     let senha = document.getElementById("senha").value;
     let endereco = document.getElementById("endereco").value;
 
-    
-
-    // Formatando a data para o padrão YYYY/mm/dd
+    // Formata a data para o padrão YYYY-mm-dd
     var dia  = data_nascimento.split("/")[0];
     var mes  = data_nascimento.split("/")[1];
     var ano  = data_nascimento.split("/")[2];
@@ -59,7 +57,7 @@ function cadastroUsuario(){
     // realiza o POST com a URL e o BODY
     postUsuario(url, body);
 
-    alert("Usuário Cadastrado com sucesso !!!"); // gerando um alert
-    window.location.href='../index.php'; // redireciona para a pagina inicial
-  
+    alert("Usuário Cadastrado com sucesso !!!");
+    window.location.href='../index.php';
+    
 }
