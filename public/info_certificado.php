@@ -21,16 +21,16 @@
 
     $id = $_SESSION['id'];
 
-    // retorna as informações sobre o certificado
+    // Retorna as informações sobre o certificado
     $items = $certificado->retornarInformações($id);
 
-    // armazenando as informações específicas
+    // Armazenando as informações específicas
     $dn = $items[dn];
     $issuerDN = $items[issuer_dn];
     $validade_certificado_before = $items[validade_certificado_before];
     $validade_certificado_after = $items[validade_certificado_after];
 
-    
+    // Criando novas variáveis de informações do certificado a partir de uma única
     list($c_dn, $o_dn, $ou_dn_1, $ou_dn_2, $ou_dn_3, $cn_dn) = explode(",", $dn);
     list($c_issuer_dn, $o_issuer_dn, $ou_issuer_dn_1, $ou_issuer_dn_2, $ou_issuer_dn_3) = explode(",", $issuerDN);
 
