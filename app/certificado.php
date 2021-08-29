@@ -128,4 +128,33 @@
 
             return $resultado;
         }
+
+         // Verificar se já existe upload de arquivo no usuário
+         public function verificarArquivo($id){
+            $sqlQuery = " SELECT dn FROM " . $this->db_table . " WHERE usuarios.id = :id;";
+
+            $sqlQuery = $this->conexao->prepare($sqlQuery);
+
+            // sanitize
+            $id=htmlspecialchars(strip_tags($id));
+
+            // bind data
+            $sqlQuery->bindParam(":id", $id);
+
+            $sqlQuery->execute();
+
+            // Validar se os dados existem
+            if($sqlQuery->rowCount() > 0){
+                $dado = $sqlQuery->fetch();
+
+                // Criar uma sessão
+                $_SESSION['dn'] = $dado['dn'];
+
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        
     }
