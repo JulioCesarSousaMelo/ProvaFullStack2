@@ -67,34 +67,39 @@
 
         // Inserir dados do certificado no banco
         public function inserirInformacoes($id){
+            
+            $sqlQuery = "UPDATE " 
+                            . $this->db_table .
+                        " SET 
+                            dn = :dn,
+                            issuer_dn = :issuerDN,
+                            validade_certificado_before = :validityBefore,
+                            validade_certificado_after = :validityAfter
+                        WHERE 
+                            usuarios.id = :id";
 
-            $sqlQuery = $this->conexao->prepare("UPDATE "
-                                                    . $this->db_table .
-                                                " SET 
-                                                    dn = :dn,
-                                                    issuer_dn = :issuerDN,
-                                                    validade_certificado_before = :validityBefore,
-                                                    validade_certificado_after = :validityAfter
-                                                WHERE 
-                                                    usuarios.id = :id");
+            $sqlQuery = $this->conexao->prepare($sqlQuery);
+
+            // sanitize
+            $this->dn=htmlspecialchars(strip_tags($this->dn));
+            $this->issuerDN=htmlspecialchars(strip_tags($this->issuerDN));
+            $this->validityBefore=htmlspecialchars(strip_tags($this->validityBefore));
+            $this->validityAfter=htmlspecialchars(strip_tags($this->validityAfter));
+            $this->id=htmlspecialchars(strip_tags($this->id));
 
             // bind data
-            $stmt->bindValue(":dn", "oooooo");
-            $stmt->bindValue(":issuerDN", "oooooo");
-            $stmt->bindParam(":validityBefore", $this->validityBefore);
-            $stmt->bindParam(":validityAfter", $this->validityAfter);
-            $stmt->bindParam(":id", $id);
+            $sqlQuery->bindParam(":dn", $this->dn);
+            $sqlQuery->bindParam(":issuerDN", $this->issuerDN);
+            $sqlQuery->bindParam(":validityBefore", $this->validityBefore);
+            $sqlQuery->bindParam(":validityAfter", $this->validityAfter);
+            $sqlQuery->bindParam(":id", $id);
 
             $sqlQuery->execute();
 
-            if($sqlQuery){
+            if($sqlQuery->execute()){
                 echo "<script> 
-                        alert('Upload feito com sucesso!'); 
+                        alert('Upload de arquivo feito com sucesso!'); 
                         window.location.href='../public/info_certificado.php';
-                     </script>";
-            }else{
-                echo "<script> 
-                        window.location.href='../public/upload_certificado.php';
                      </script>";
             }
         }
