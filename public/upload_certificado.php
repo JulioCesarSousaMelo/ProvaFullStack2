@@ -50,7 +50,7 @@
 
         // trasformando os item array para string, pois os mesmos serão enviado ao banco de dados
         $itemDN = implode(',', $itemDN);
-        $itemIssuerDN = implode("','", $itemIssuerDN);
+        $itemIssuerDN = implode(',', $itemIssuerDN);
 
         $certificado->armazenarInformacoes($itemDN, $itemIssuerDN, $validityBefore, $validityAfter);
 
