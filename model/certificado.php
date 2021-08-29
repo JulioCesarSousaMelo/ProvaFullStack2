@@ -42,18 +42,18 @@
                     if(move_uploaded_file($temporario, $pasta.$this->nomeCertificado)){
                         echo "<script> 
                                 alert('Upload de arquivo feito com sucesso!'); 
-                                window.location.href='../public/info_certificado.php';
+                                window.location.href='../view/info_certificado.php';
                              </script>";
                     }else{
                         echo "<script> 
                                 alert('Erro no upload do arquivo!'); 
-                                window.location.href='../public/upload_certificado.php';
+                                window.location.href='../view/upload_certificado.php';
                               </script>";
                     }
                 }else{
                     echo "<script> 
                             alert('Erro no upload do arquivo, extensão inválida!'); 
-                            window.location.href='../public/upload_certificado.php';
+                            window.location.href='../view/upload_certificado.php';
                           </script>"; 
                 }
             }

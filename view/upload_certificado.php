@@ -69,7 +69,7 @@
 <body>
     <h1>UPLOAD DE CERTIFICADO</h1>
 
-    <p>Olá, <?= $_SESSION['nome']; ?> | <a href="../public/logout.php">Logout</a></p> 
+    <p>Olá, <?= $_SESSION['nome']; ?> | <a href="../controller/logout.php">Logout</a></p> 
 
     <form action= "<?php echo $_SERVER['PHP_SELF']; ?>" method= "POST" enctype= "multipart/form-data">
         <input type="file" name="file"/><br><br>

@@ -9,7 +9,7 @@
 <body>
     <h1>Login</h1>
     <hr>
-    <form action="public/verifica_login.php" method="POST">
+    <form action="controller/verifica_login.php" method="POST">
         <label>E-mail</label>
             <input type="email" name="email" ></br>      
         <label>Senha</label>
@@ -17,6 +17,6 @@
         <button type="submit" name="btn-entrar"> Entrar</button>
     </form>
 
-    <p>Ainda não possui <a href="public/cadastro.php">cadastro ?</a></p>
+    <p>Ainda não possui <a href="./view/cadastro.php">cadastro ?</a></p>
 </body>
 </html>

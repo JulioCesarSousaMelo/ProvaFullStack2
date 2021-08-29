@@ -33,12 +33,12 @@
 
                 if($certificado->verificarArquivo($id)){
                     if(isset($_SESSION['dn'])){
-                        header("Location: ../public/info_certificado.php");
+                        header("Location: ../view/info_certificado.php");
                     }else{
-                        header("Location: ../public/upload_certificado.php");
+                        header("Location: ../view/upload_certificado.php");
                     }
                 }else{
-                    header("Location: ../public/upload_certificado.php");
+                    header("Location: ../view/upload_certificado.php");
                 }
             }else{
                 session_unset(); // remove todas as variáveis de sessão
