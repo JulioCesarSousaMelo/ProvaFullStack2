@@ -108,13 +108,13 @@
     </div>
     <div class="container mt-3">
         <div class="row">
-            <div class="col-12 mt-2">
+            <div class="col-12 mt-2 btn btn-danger form-controle">
             <h1>CONFIRMA AS INFORMAÇÕES?</h1>
             </div>
         </div>
         <div class="row mt-2">
             <div class="col-12">
-                <a class="btn btn-warning" href="../index.php">Início</a>
+                <a class="btn btn-warning form-controle" href="../index.php">Início</a>
             </div>
             <hr class="mt-3">
         </div>
