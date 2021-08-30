@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 27-Ago-2021 às 15:02
+-- Tempo de geração: 30-Ago-2021 às 11:33
 -- Versão do servidor: 5.7.24
 -- versão do PHP: 7.4.1
 
@@ -35,17 +35,13 @@ CREATE TABLE `usuarios` (
   `data_nascimento` date NOT NULL,
   `telefone` varchar(20) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `senha` varchar(100) NOT NULL,
+  `senha` varchar(255) NOT NULL,
   `endereco` varchar(255) NOT NULL,
   `dn` varchar(255) DEFAULT NULL,
   `issuer_dn` varchar(255) DEFAULT NULL,
   `validade_certificado_before` varchar(255) DEFAULT NULL,
   `validade_certificado_after` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `usuarios`
---
 
 --
 -- Índices para tabelas despejadas
@@ -57,7 +53,7 @@ CREATE TABLE `usuarios` (
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `cpf` (`cpf`),
-  ADD UNIQUE KEY `email` (`telefone`);
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -67,7 +63,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
