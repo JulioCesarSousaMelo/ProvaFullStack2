@@ -40,10 +40,7 @@
         
                     // upload do arquivo      
                     if(move_uploaded_file($temporario, $pasta.$this->nomeCertificado)){
-                        echo "<script> 
-                                alert('Upload de arquivo feito com sucesso!'); 
-                                window.location.href='../view/info_certificado.php';
-                             </script>";
+   
                     }else{
                         echo "<script> 
                                 alert('Erro no upload do arquivo!'); 
@@ -100,6 +97,11 @@
             $sqlQuery->bindParam(":id", $id);
 
             $sqlQuery->execute();
+
+            echo "<script> 
+                    alert('Upload de arquivo feito com sucesso!'); 
+                    window.location.href='../view/info_certificado.php';
+                  </script>";
         }
 
         // Selecionar as informações do certificado no banco
@@ -147,9 +149,8 @@
             if($sqlQuery->rowCount() > 0){
                 $dado = $sqlQuery->fetch();
 
-                // Criar uma sessão
-                $_SESSION['dn'] = $dado['dn'];
-
+            // Criar uma sessão
+            $_SESSION['dn'] = $dado['dn'];
                 return true;
             }else{
                 return false;
