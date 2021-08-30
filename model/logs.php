@@ -28,18 +28,6 @@ class Logs{
 
     // .............................................................. //
     //                                                                //
-    //  Gera uma mensagem de Cadastro no sistema, para ser usada na   //
-    //  função criarLog()                                             //
-    //                                                                //
-    // .............................................................. //
-    public function mensagemCadastro($nome){
-        $mensagemLog = "[Usuário: " . $nome . "] - [Ação: Cadastro no Sistema] - [Data/Hora: " . date('d/m/Y \à\s H:i:s') . " ]\n";
-
-        return $mensagemLog;
-    }
-
-    // .............................................................. //
-    //                                                                //
     //  Gera uma mensagem de Upload de certificado, para ser usada    //
     //  na função criarLog()                                          //
     //                                                                //
