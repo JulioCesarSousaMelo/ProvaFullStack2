@@ -37,4 +37,16 @@ class Logs{
 
         return $mensagemLog;
     }
+
+    // .............................................................. //
+    //                                                                //
+    //  Gera uma mensagem de Logout, para ser usada na                //
+    //  função criarLog()                                             //
+    //                                                                //
+    // .............................................................. //
+    public function mensagemLogout($nome){
+        $mensagemLog = "[Usuário: " . $nome . "] - [Ação: Logout no sistema] - [Data/Hora: " . date('d/m/Y \à\s H:i:s') . "]\n";
+
+        return $mensagemLog;
+    }
 }
