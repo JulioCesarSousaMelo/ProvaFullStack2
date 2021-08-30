@@ -34,10 +34,11 @@
 
             if(isset($_SESSION['id'])){
 
-                // Criando Log de Login
-                date_default_timezone_set('America/Sao_Paulo');
-                $mensagemLog = $logs->mensagemLogin($nome);
-                $logs->criarLog($mensagemLog);
+                
+                date_default_timezone_set('America/Sao_Paulo'); // Definindo o fuso horário de São Paulo
+
+                $mensagemLog = $logs->mensagemLogin($nome);  // Criando Mensagem para o Log
+                $logs->criarLog($mensagemLog);  // Criando Log
 
                 if($certificado->verificarArquivo($id)){
                     if(isset($_SESSION['dn'])){
