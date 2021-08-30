@@ -20,10 +20,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <title>Cadastro</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <!-- =================================================================================================================================================== -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <!-- =================================================================================================================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <!-- =================================================================================================================================================== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- =================================================================== -->
 
         <script>
             function submitform() {
@@ -96,23 +103,55 @@
         </script>
 </head>
 <body>   
+    <div class="bg-dark p-4">
+        <img src="../resources/img/logo_horizontal_soluti.png" class="mx-auto d-block " alt="MDN logo">
+    </div>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12 mt-2">
+            <h1>CONFIRMA AS INFORMAÇÕES?</h1>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <a class="btn btn-warning" href="../index.php">Início</a>
+            </div>
+            <hr class="mt-3">
+        </div>
+    </div>
     <form onsubmit="cadastroUsuario()">
-        <h1>CONFIRMA AS INFORMAÇÕES?</h1>
-
-        <label>Nome</label>
-            <input type="text" id="nome" value="<?php echo $nome; ?>" placeholder="<?php echo $nome; ?>" required></br>
-        <label>CPF</label>
-            <input type="text" id="cpf" name="cpf"  value="<?php echo $cpf; ?>" minlength="14" maxlength="14" onkeypress="$(this).mask('000.000.000-00')" placeholder="<?php echo $cpf; ?>" required ></br>
-        <label>Data de Nascimento </label>
-            <input type="text" id="data_nascimento" name="data_nascimento" value="<?php echo $data_nascimento; ?>" onkeypress="$(this).mask('00/00/0000')" placeholder="<?php echo $data_nascimento; ?>" required></br>
-        <label>Telefone</label>
-            <input type="text" id="telefone" name="telefone" value="<?php echo $telefone; ?>" onkeypress="$(this).mask('(00)00000-0000')" placeholder="<?php echo $telefone; ?>" required></br>
-        <label>E-mail</label>
-            <input type="email" id="email" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $email; ?>" required></br>      
-        <label>Endereço</label>
-            <input type="text" id="endereco" name="endereco" value="<?php echo $endereco; ?>" placeholder="<?php echo $endereco; ?>" required></br>
-            <input type="hidden" id="senha" name="senha" value="<?php echo $senhaHash; ?>" placeholder="<?php echo $senhaHash; ?>" required></br>
-        <input type="submit" id="send" value="Cadastrar">
+        <div class="container w-75">
+            <div class="row">
+                <div class="col-12">
+                    <label class="label-control">Nome</label>
+                    <input class="form-control" type="text" id="nome" value="<?php echo $nome; ?>" placeholder="<?php echo $nome; ?>" required></br>
+                </div>
+                <div class="col-6">
+                    <label class="label-control">CPF</label>
+                    <input class="form-control" type="text" id="cpf" name="cpf"  value="<?php echo $cpf; ?>" minlength="14" maxlength="14" onkeypress="$(this).mask('000.000.000-00')" placeholder="<?php echo $cpf; ?>" required ></br>
+                </div>
+                <div class="col-3">
+                    <label class="label-control">Data de Nascimento </label>
+                    <input class="form-control" type="text" id="data_nascimento" name="data_nascimento" value="<?php echo $data_nascimento; ?>" onkeypress="$(this).mask('00/00/0000')" placeholder="<?php echo $data_nascimento; ?>" required></br>
+                </div>
+                <div class="col-3">
+                    <label class="label-control">Telefone</label>
+                    <input class="form-control" type="text" id="telefone" name="telefone" value="<?php echo $telefone; ?>" onkeypress="$(this).mask('(00)00000-0000')" placeholder="<?php echo $telefone; ?>" required></br>
+                </div>
+                <div class="col-6">
+                    <label class="label-control">E-mail</label>
+                    <input class="form-control" type="email" id="email" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $email; ?>" required></br> 
+                </div>
+                <div class="col-6">
+                    <label class="label-control">Endereço</label>
+                    <input class="form-control" type="text" id="endereco" name="endereco" value="<?php echo $endereco; ?>" placeholder="<?php echo $endereco; ?>" required></br>
+                    <input class="form-control" type="hidden" id="senha" name="senha" value="<?php echo $senhaHash; ?>" placeholder="<?php echo $senhaHash; ?>" required></br>
+                </div>
+                <div class="col mb-5">
+                    <input type="submit" id="send" value="Cadastrar" class="btn btn-success">
+                </div>
+            </div>
+        </div>
     </form>
 </body>
 </html>

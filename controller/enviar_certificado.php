@@ -40,7 +40,7 @@
 
     // inserindo as informações específicas de $issuerDN[] para o array $issuerDN
     for($i = 0; $i < 5; $i++){
-        array_push($itemIssuerDN, $dn[0]["rdnSequence"][$i][0]["value"]["printableString"]);  
+        array_push($itemIssuerDN, $issuerDN[0]["rdnSequence"][$i][0]["value"]["printableString"]);  
     }
 
     // trasformando os item do array $itemDN para uma única string
