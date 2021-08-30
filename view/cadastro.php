@@ -22,7 +22,7 @@
             <label>Data de Nascimento </label>
                 <input type="text" name="data_nascimento" id="data_nascimento" onkeypress="$(this).mask('00/00/0000')" required></br>
             <label>Telefone</label>
-                <input type="text" name="telefone" id="telefone" required></br>
+                <input type="text" name="telefone" id="telefone" onkeypress="$(this).mask('(00)00000-0000')" required></br>
             <label>E-mail</label>
                 <input type="email" name="email" id="email" required></br>      
             <label>Senha</label>
