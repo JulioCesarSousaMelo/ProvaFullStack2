@@ -22,7 +22,7 @@
 <body>
     <h1>UPLOAD DE CERTIFICADO</h1>
 
-    <p>Olá, <?= $_SESSION['nome']; ?> | <a href="../controller/logout.php">Logout</a></p> 
+    <p>Olá, <?= $_SESSION['nome']; ?> | <a href="../view/info_certificado.php">Meu Certificado</a> | <a href="../controller/logout.php">Logout</a></p> 
 
     <form action= "<?php echo "../controller/enviar_certificado.php"; ?>" method= "POST" enctype= "multipart/form-data">
         <input type="file" name="file"/><br><br>
