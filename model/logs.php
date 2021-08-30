@@ -33,7 +33,7 @@ class Logs{
     //                                                                //
     // .............................................................. //
     public function mensagemCadastro($nome){
-        $mensagemLog = "[Usuário: " . $nome . "] - [Ação: Cadastro no Sistema] - [Data/Hora: " . date('d/m/Y \à\s H:i:s') . "]\n";
+        $mensagemLog = "[Usuário: " . $nome . "] - [Ação: Cadastro no Sistema] - [Data/Hora: " . date('d/m/Y \à\s H:i:s') . " ]\n";
 
         return $mensagemLog;
     }
