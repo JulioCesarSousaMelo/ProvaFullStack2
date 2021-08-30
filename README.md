@@ -53,7 +53,7 @@ No projeto foram utilizadas as seguintes tecnologias:
 
 ## 🚀 Como executar o projeto
 
-É preciso ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/), PHP, MAMP e o Composer(para o autoload).
+É preciso ter PHP, MAMP, Composer(para o autoload) e um editor para trabalhar com o código, exemplo: [VSCode](https://code.visualstudio.com/).
 
 #### 🧭 Rodando a aplicação
 
