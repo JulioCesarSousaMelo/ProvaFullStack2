@@ -41,6 +41,7 @@ function cadastroUsuario(){
     var mes  = data_nascimento.split("/")[1];
     var ano  = data_nascimento.split("/")[2];
     
+    // Armazena fata formatada
     data_nascimento_formatada = ano + '-' + ("0"+mes) .slice(-2) + '-' + ("0"+dia).slice(-2);
 
     // define o BODY em formato JSON
