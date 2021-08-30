@@ -24,12 +24,11 @@
 
          // LOGIN - Verificar EMAIL e SENHA no banco
          public function login($email, $senha){
-            $sqlQuery = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
+            $sqlQuery = "SELECT * FROM usuarios WHERE email = :email";
 
             $sqlQuery = $this->connection->prepare($sqlQuery);
 
             $sqlQuery->bindValue("email", $email);
-            $sqlQuery->bindValue("senha", $senha);
 
             $sqlQuery->execute();
 
@@ -37,13 +36,19 @@
             if($sqlQuery->rowCount() > 0){
                 $dado = $sqlQuery->fetch();
 
+                if(password_verify($senha, $dado['senha'])){
                 // Criar uma sessão
                 $_SESSION['id'] = $dado['id'];
                 $_SESSION['nome'] = $dado['nome'];
                 $_SESSION['email'] = $dado['email'];
                 $_SESSION['senha'] = $dado['senha'];
-
+                
                 return true;
+                
+                }else{
+                    return false;
+                }
+                
             }else{
                 return false;
             }
