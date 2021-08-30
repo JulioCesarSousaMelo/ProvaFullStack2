@@ -9,6 +9,7 @@
         include_once '../config/database.php';
         include_once '../model/usuarios.php';
         include_once '../model/certificado.php';
+        include_once '../model/logs.php';
 
         // Instanciando Novos Objetos 
         $database = new Database();
@@ -16,6 +17,7 @@
 
         $usuario = new Usuarios($db); 
         $certificado = new Certificado($db);
+        $logs = new Logs();
 
         // Conexão com o Banco
         $database->getConnection();
@@ -27,9 +29,15 @@
         // Verificar login e existência de upload
         if($usuario->login($email, $senha)){
 
-            $id = $_SESSION['id'];
+            $id = $_SESSION['id']; // parâmetro para verificarArquivo()
+            $nome = $_SESSION['nome']; // parâmetro para mensagemLogin()
 
             if(isset($_SESSION['id'])){
+
+                // Criando Log de Login
+                date_default_timezone_set('America/Sao_Paulo');
+                $mensagemLog = $logs->mensagemLogin($nome);
+                $logs->criarLog($mensagemLog);
 
                 if($certificado->verificarArquivo($id)){
                     if(isset($_SESSION['dn'])){
