@@ -1,21 +1,24 @@
 <?php 
 
-    // Iniciando sessão ou resumindo sessão existe
-    session_start();
+    session_start();  //  Iniciando sessão ou resumindo sessão existe   
 
     include_once '../vendor/autoload.php'; 
     include_once '../config/database.php';
     include_once '../model/certificado.php'; 
+    include_once '../model/logs.php'; 
 
     use phpseclib3\File\X509; 
 
-    // Instanciando Novos Objetos 
+    // Instanciando Objetos
     $x509 = new X509(); 
     $database = new Database();
     $db = $database->getConnection();
     $certificado = new Certificado($db);
+    $logs = new Logs();
 
-    // Recebendo resultado do formulário 
+    // .............................................................. //
+    //  Recebendo e armazenando as informações do Certificado         //
+    // .............................................................. //
     $resultForm = $_POST['enviarArquivo'];
 
     $nomeCertificado = $certificado->uploadArquivo($resultForm);
@@ -30,23 +33,38 @@
     $itemDN = array();
     $itemIssuerDN = array();
 
-    // items DN
+    // inserindo as informações específicas de $dn[] para o array $itemDN
     for($i = 0; $i < 6; $i++){
-        array_push($itemDN, $dn[0]["rdnSequence"][$i][0]["value"]["printableString"]);
+        array_push($itemDN, $dn[0]["rdnSequence"][$i][0]["value"]["printableString"]); 
     }
 
-    // items issuerDN
+    // inserindo as informações específicas de $issuerDN[] para o array $issuerDN
     for($i = 0; $i < 5; $i++){
-        array_push($itemIssuerDN, $dn[0]["rdnSequence"][$i][0]["value"]["printableString"]);
+        array_push($itemIssuerDN, $dn[0]["rdnSequence"][$i][0]["value"]["printableString"]);  
     }
 
-    // trasformando os item array para string, pois os mesmos serão enviado ao banco de dados
+    // trasformando os item do array $itemDN para uma única string
     $itemDN = implode(',', $itemDN);
+    // trasformando os item do array $itemIssuerDN para uma única string
     $itemIssuerDN = implode(',', $itemIssuerDN);
 
     $certificado->armazenarInformacoes($itemDN, $itemIssuerDN, $validityBefore, $validityAfter);
 
-    $id = $_SESSION['id'];
+    $id = $_SESSION['id']; // parâmetro para inserirInformacoes()
+    $nome = $_SESSION['nome']; // parâmetro para mensagemUpload()
+
+    // .............................................................. //
+    //  Definições para a criação do Log de Upload                    //
+    // .............................................................. //
+    date_default_timezone_set('America/Sao_Paulo'); // Definindo o fuso horário de São Paulo
+
+    $mensagemLog = $logs->mensagemUpload($nome);  // Criando Mensagem para o Log
+    $logs->criarLog($mensagemLog);  // Criando Log
+
+    // .............................................................. //
+    //  Inserindo dados do arquivo no Banco de Dados                  //
+    // .............................................................. //
     $certificado->inserirInformacoes($id);
+
 
     
