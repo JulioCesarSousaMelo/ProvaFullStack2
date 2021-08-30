@@ -14,7 +14,7 @@
 <body>
     <h1>Cadastro</h1>
     <hr>
-    <form onsubmit="cadastroUsuario()">
+    <form action="../controller/enviar_cadastro.php" method="POST">
             <label>Nome</label>
                 <input type="text" name="nome" id="nome" required></br>
             <label>CPF</label>
